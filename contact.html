@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Ess Bee Trade Box Private Limited</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles for the loading screen (copied for consistency) */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #loader img {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        #loader .tagline {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #a0a0a0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.5s forwards;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .loading {
+            overflow: hidden;
+        }
+
+        /* --- TYPOGRAPHY SYSTEM (copied for consistency) --- */
+        .section-title, .hero-content h1, .brief-section h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .section-title {
+            font-size: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- DYNAMIC BACKGROUND & ANIMATION STYLES (copied for consistency) --- */
+        .parallax-bg {
+            background-image: url('images/electronics-texture-bg.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+        .brief-section {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .brief-section:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        /* Custom CSS variables for brand colors (copied for consistency) */
+        :root {
+            --brand-primary-blue: #2d8cff;
+            --brand-dark-text: #2C2C2C;
+        }
+        .text-[var(--vhm-gold)],
+        .focus\:ring-\[var\(--vhm-gold\)\],
+        .focus\:border-\[var\(--vhm-gold\)\],
+        .focus\:ring-\[var\(--vhm-gold\)\] {
+            color: var(--brand-primary-blue);
+            border-color: var(--brand-primary-blue);
+            --tw-ring-color: var(--brand-primary-blue);
+        }
+        .bg-vhm-dark-text {
+            background-color: var(--brand-dark-text);
+        }
+        .text-vhm-dark-text {
+            color: var(--brand-dark-text);
+        }
+
+        /* Specific styles for contact page elements */
+        .contact-icon {
+            color: var(--brand-primary-blue);
+        }
+        /* Tailwind aspect ratio helper for responsive iframes */
+        .aspect-w-16 {
+            position: relative;
+            width: 100%;
+        }
+        .aspect-w-16::before {
+            content: '';
+            display: block;
+            padding-top: calc(var(--aspect-h) / var(--aspect-w) * 100%);
+        }
+        .aspect-w-16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Custom aspect ratio for map */
+        .aspect-h-9 {
+            --aspect-h: 9;
+        }
+        .aspect-w-16 {
+            --aspect-w: 16;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 loading">
+
+<!-- Loading Screen -->
+<div id="loader">
+    <img src="Assets/logo.jpg" alt="Ess Bee Trade Box Pvt Ltd Logo" class="h-24 w-auto">
+    <p class="tagline" style="font-family: 'Playfair Display', serif;">Ess Bee Trade Box Pvt Ltd </p>
+</div>
+
+<!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="Assets/logo.jpg" alt="Ess Bee Trade Box Pvt Ltd Logo" class="h-20 md:h-20 w-auto">
+        </a>
+        <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+            <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <div class="dropdown">
+                <a href="services.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                    What We Do <i class="fas fa-chevron-down text-xs ml-1"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="design-engineering.html">Design & Engineering</a>
+                    <a href="metal-fabrication.html">Metal Fabrication</a>
+                    <a href="powder-coating.html">Powder Coating</a>
+                    <a href="component-integration.html">Component Integration</a>
+                    <a href="quality-assurance.html">Quality Assurance</a>
+                </div>
+            </div>
+           <div class="dropdown">
+                <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                    Our Gallery <i class="fas fa-chevron-down text-xs ml-1"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="our-work.html">Our Work</a>
+                   <a href="our-products.html">Our Proudcts</a>
+                    <a href="our-certificates.html">Our Certificates</a>
+                </div>
+            </div>
+            <a href="about-us.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+            <a href="contact.html" class="nav-link nav-link-active px-3 py-2 rounded-md text-sm font-medium">Contact Us</a> <!-- Active for this page -->
+        </div>
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+    <!-- Mobile menu content -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t border-gray-200">
+        <a href="index.html" class="block nav-link px-4 py-3 border-b border-gray-100">Home</a>
+       
+
+        <!-- What We Do Mobile Dropdown -->
+        <div class="border-b border-gray-100">
+            <button id="mobile-services-dropdown-button" class="flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-700">
+                What We Do
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 transform"></i>
+            </button>
+            <div id="mobile-services-dropdown-content" class="hidden pl-8">
+                <a href="services.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Overview</a>
+                <a href="design-engineering.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Design & Engineering</a>
+                <a href="metal-fabrication.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Metal Fabrication</a>
+                <a href="powder-coating.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Powder Coating</a>
+                <a href="component-integration.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Component Integration</a>
+                <a href="quality-assurance.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Quality Assurance</a>
+            </div>
+        </div>
+
+        <!-- Gallery Mobile Dropdown -->
+        <div class="border-b border-gray-100">
+            <button id="mobile-gallery-dropdown-button" class="flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-700">
+                Our Gallery
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 transform"></i>
+            </button>
+            <div id="mobile-gallery-dropdown-content" class="hidden pl-8">
+                <a href="our-work.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Work</a>
+                <a href="our-products.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Products</a>
+                <a href="our-certificates.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Certificates</a>
+            </div>
+             <a href="about-us.html" class="block nav-link px-4 py-3 border-b border-gray-100">About Us</a>
+        <a href="contact.html" class="block nav-link px-4 py-3 border-b border-gray-100 nav-link-active">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Page Hero Section -->
+    <section class="relative bg-gray-700 py-20 bg-cover bg-center" style="background-image: url('images/contact-banner.jpg');"> <!-- Placeholder image for banner -->
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg animate-on-scroll fade-in-up">Contact Us</h1>
+            <p class="mt-4 text-lg text-gray-200 animate-on-scroll fade-in-up" style="animation-delay: 200ms;">We're Here to Help You with Your Electrical Panel Needs</p>
+        </div>
+    </section>
+
+    <!-- New Contact Card Section -->
+    <section id="our-contact-card" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <h2 class="section-title text-4xl md:text-5xl font-extrabold relative pt-10">Our Contact Card</h2>
+            <p class="mt-8 text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto animate-on-scroll fade-in-up">
+                Connect with our leadership directly. We are always ready to discuss your project needs and provide expert solutions.
+            </p>
+
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl mt-12 animate-on-scroll fade-in-up" style="animation-delay: 300ms;">
+                <!-- Placeholder for Contact Card Image -->
+                <!-- Replace this with your actual image path (e.g., Assets/your-directors-contact-card.jpg) -->
+                <img src="https://placehold.co/800x450/2d8cff/ffffff?text=Directors+Contact+Card" alt="Directors Contact Card" class="max-w-full h-auto rounded-lg mx-auto mb-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <!-- Director 1 Contact Details -->
+                    <div>
+                        <h3 class="text-xl font-bold text-[var(--brand-dark-text)] mb-2">S N Dubey</h3>
+                        <p class="text-gray-700 mb-1"><i class="fas fa-phone-alt contact-icon mr-2"></i> Phone: <a href="tel:+919334202949" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">+91-9334202949</a></p>
+                        <p class="text-gray-700"><i class="fas fa-envelope contact-icon mr-2"></i> Email: <a href="mailto:box24trade@gmail.com" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">box24trade@gmail.com</a></p>
+                    </div>
+                    <!-- Director 2 Contact Details -->
+                    <div>
+                        <h3 class="text-xl font-bold text-[var(--brand-dark-text)] mb-2">B K Mishra</h3>
+                        <p class="text-gray-700 mb-1"><i class="fas fa-phone-alt contact-icon mr-2"></i> Phone: <a href="tel:+918709653866" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">+91-8709653866</a></p>
+                        <p class="text-gray-700"><i class="fas fa-envelope contact-icon mr-2"></i> Email: <a href="mailto:box24trade@gmail.com" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">box24trade@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- General Contact Details and Map Section -->
+    <section id="general-contact-details" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-4xl md:text-5xl font-extrabold relative pt-10 text-center">Our Location</h2>
+            <p class="mt-8 text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto animate-on-scroll fade-in-up">
+                Visit us at our facility or reach out through our general contact channels.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-12 mt-12">
+                <!-- General Contact Info Column -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-xl animate-on-scroll slide-in-left">
+                    <h3 class="text-2xl font-bold text-[var(--brand-dark-text)] mb-6">General Enquiries</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-gray-700 font-semibold mb-2"><i class="fas fa-map-marker-alt contact-icon text-2xl mr-3"></i> Address:</p>
+                            <p class="text-gray-600 pl-8">Jagdeo Nagar, beside Leeds Asian School,<br>Nahar Chowk, Danapur, Patna -801503<br></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 font-semibold mb-2"><i class="fas fa-phone-alt contact-icon text-2xl mr-3"></i> Phone:</p>
+                            <p class="text-gray-600 pl-8"><a href="tel:+918709653866" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">+91-8709653866</a></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 font-semibold mb-2"><i class="fas fa-envelope contact-icon text-2xl mr-3"></i> Email:</p>
+                            <p class="text-gray-600 pl-8"><a href="mailto:box24trade@gmail.com" class="hover:text-[var(--brand-primary-blue)] transition-colors duration-300">box24trade@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                   <!--<h3 class="text-2xl font-bold text-[var(--brand-dark-text)] mt-10 mb-6">Follow Us</h3>
+                    <div class="flex justify-start space-x-6">
+                        <a href="https://www.instagram.com/yourcompanyinstagram" target="_blank" class="social-link text-3xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/yourcompanylinkedin" target="_blank" class="social-link text-3xl" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/yourcompanyfacebook" target="_blank" class="social-link text-3xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div> --> 
+                </div>
+
+                <!-- Google Map Embed Column -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-xl animate-on-scroll slide-in-right">
+                    <h3 class="text-2xl font-bold text-[var(--brand-dark-text)] mb-6">Find Us on Map</h3>
+                    <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-md">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d308.29788840727593!2d85.0627035424796!3d25.61236044756102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed565283513c01%3A0x45583b707e8cb419!2sLeed&#39;s%20Asian%20School!5e0!3m2!1sen!2sin!4v1753615304494!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Pre-Footer -->
+<section id="contact-details" class="pre-footer py-16">
+<div class="container mx-auto px-6 text-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+<div class="text-center">
+<h4 class="pre-footer-heading font-bold text-xl mb-4 tracking-wide">Quick Links</h4>
+<a href="index.html" class="pre-footer-link">Home</a>
+<a href="about-us.html" class="pre-footer-link">About Us</a>
+<a href="services.html" class="pre-footer-link">Services</a>
+<a href="contact.html" class="pre-footer-link">Contact Us</a>
+</div>
+<div class="text-center justify-text">
+<h4 class="pre-footer-heading font-bold text-xl mb-4 tracking-wide">Contact Us</h4>
+<p class="text-gray-600 leading-relaxed">
+<strong>Address:</strong> Jagdeo Nagar, beside Leeds Asian School,<br>Nahar Chowk, Danapur, Patna -801503<br>
+<strong>Phone:</strong> <a href="tel:+918709653866" class="pre-footer-link inline">+91-8709653866</a><br>
+<strong>Email:</strong> <a href="mailto:box24trade@gmail.com" class="pre-footer-link inline">box24trade@gmail.com</a>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="py-8 bg-gray-800 text-gray-400">
+<div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+<p class="mb-4 md:mb-0 text-center md:text-left text-base">&copy; <span id="currentYear"></span> Ess Bee Trade Box Private Limited. All Rights Reserved.</p>
+<!--<div class="flex justify-center space-x-6">
+ <a href="https://www.instagram.com/yourcompanyinstagram" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com/company/yourcompanylinkedin" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.facebook.com/yourcompanyfacebook" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+</div> -->
+</div>
+</footer>
+
+<script>
+    // Set the current year in the footer dynamically.
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // --- Loading Screen Logic ---
+    const loader = document.getElementById('loader');
+    const minLoadTime = 2500;
+    const pageLoadTime = Date.now();
+
+    window.addEventListener('load', () => {
+        const timeLapsed = Date.now() - pageLoadTime;
+        const delay = Math.max(minLoadTime - timeLapsed, 0);
+
+        setTimeout(() => {
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+            document.body.classList.remove('loading');
+        }, delay);
+    });
+
+    // --- Mobile Menu Dropdown Logic ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileServicesDropdownButton = document.getElementById('mobile-services-dropdown-button');
+    const mobileServicesDropdownContent = document.getElementById('mobile-services-dropdown-content');
+    const mobileGalleryDropdownButton = document.getElementById('mobile-gallery-dropdown-button');
+    const mobileGalleryDropdownContent = document.getElementById('mobile-gallery-dropdown-content');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Toggle for "What We Do" dropdown in mobile
+    if (mobileServicesDropdownButton && mobileServicesDropdownContent) {
+        mobileServicesDropdownButton.addEventListener('click', () => {
+            mobileServicesDropdownContent.classList.toggle('hidden');
+            const chevronIcon = mobileServicesDropdownButton.querySelector('.fa-chevron-down');
+            chevronIcon.classList.toggle('rotate-180');
+        });
+    }
+
+    // Toggle for "Gallery" dropdown in mobile
+    if (mobileGalleryDropdownButton && mobileGalleryDropdownContent) {
+        mobileGalleryDropdownButton.addEventListener('click', () => {
+            mobileGalleryDropdownContent.classList.toggle('hidden');
+            const chevronIcon = mobileGalleryDropdownButton.querySelector('.fa-chevron-down');
+            chevronIcon.classList.toggle('rotate-180');
+        });
+    }
+
+    // --- Smooth Scroll for Sub-Navigation Links ---
+    const subNavLinks = document.querySelectorAll('.sub-nav a');
+    if (subNavLinks.length > 0) {
+        subNavLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight + document.querySelector('.sub-nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    // --- Intersection Observer for Animations ---
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible', 'animate');
+            } else {
+                entry.target.classList.remove('is-visible', 'animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll, .section-title, .brief-section, .grid > div').forEach(el => {
+        animationObserver.observe(el);
+    });
+
+    // --- Active Nav Link Highlighting on Scroll ---
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinksDesktop = document.querySelectorAll('header nav .hidden.md\\:flex a.nav-link');
+    const navLinksMobile = document.querySelectorAll('#mobile-menu a');
+    const mobileDropdownLinks = document.querySelectorAll('#mobile-services-dropdown-content a, #mobile-gallery-dropdown-content a');
+
+    function updateActiveLink() {
+        let current = 'home';
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const subNavElement = document.querySelector('.sub-nav');
+        const subNavHeight = subNavElement ? subNavElement.offsetHeight : 0;
+        const offset = headerHeight + subNavHeight + 60; // Extra buffer
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - offset;
+            if (window.pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinksDesktop.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.href.includes(`index.html#${current}`) || (current === 'home' && (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '/'))) {
+                link.classList.add('nav-link-active');
+            }
+            // Handle active state for dropdown main links on desktop
+            if (link.parentElement.classList.contains('dropdown')) {
+                const dropdownLinks = link.parentElement.querySelectorAll('.dropdown-content a');
+                let dropdownActive = false;
+                dropdownLinks.forEach(dLink => {
+                    if (window.location.pathname.includes(dLink.getAttribute('href'))) {
+                        dropdownActive = true;
+                    }
+                });
+                if (dropdownActive) {
+                    link.classList.add('nav-link-active');
+                }
+            }
+        });
+
+        // Update mobile navigation links
+        navLinksMobile.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href').includes(`#${current}`) || window.location.pathname.includes(link.getAttribute('href'))) {
+                link.classList.add('nav-link-active');
+            }
+        });
+
+        // Update mobile dropdown links
+        mobileDropdownLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (window.location.pathname.includes(link.getAttribute('href'))) {
+                link.classList.add('nav-link-active');
+                // Ensure parent dropdown is open if child is active
+                if (link.closest('#mobile-services-dropdown-content')) {
+                    mobileServicesDropdownContent.classList.remove('hidden');
+                    mobileServicesDropdownButton.querySelector('.fa-chevron-down').classList.add('rotate-180');
+                } else if (link.closest('#mobile-gallery-dropdown-content')) {
+                    mobileGalleryDropdownContent.classList.remove('hidden');
+                    mobileGalleryDropdownButton.querySelector('.fa-chevron-down').classList.add('rotate-180');
+                }
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    document.addEventListener("DOMContentLoaded", updateActiveLink); // Run on load for initial state
+
+    // Smooth scroll from other pages (already present and working)
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.location.hash) {
+            const targetId = window.location.hash;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                setTimeout(() => {
+                    const headerOffset = document.querySelector('header').offsetHeight;
+                    const subNavOffset = document.querySelector('.sub-nav') ? document.querySelector('.sub-nav').offsetHeight : 0;
+                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (headerOffset + subNavOffset + 60);
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        }
+    });
+</script>

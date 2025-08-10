@@ -1,0 +1,505 @@
+/*
+  Ess Bee Trade Box Private Limited - Custom Stylesheet
+  This file contains all the custom styles for the website.
+  Think of this file as the "design blueprint" for your website's look.
+*/
+
+body {
+    /* This sets the main font for all text on your website to 'Inter'. */
+    font-family: 'Inter', sans-serif;
+    /* This sets the default text color for the entire website to a dark gray (#374151). */
+    color: #374151; /* Gray-700 */
+}
+
+/* :root defines "global" variables that can be used throughout your CSS.
+   This makes it easy to change your brand colors in one place. */
+:root {
+    /* This variable stores your main brand color, now a vibrant blue. */
+    --brand-primary-blue: #2d8cff; /* Changed from gold to your new blue */
+    /* This variable stores a dark text color, often used for headings or important text. */
+    --brand-dark-text: #2C2C2C;
+}
+
+/* ==========================================================================
+   Navigation & Dropdown
+   These styles control how your website's main menu (navigation bar) looks and behaves.
+   ========================================================================== */
+.nav-link {
+    /* Sets the default color of your navigation links using the brand dark text color. */
+    color: var(--brand-dark-text);
+    /* Makes color changes smooth over 0.3 seconds when the user interacts with the link. */
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    /* Changes the link color to your brand's blue when the mouse hovers over it. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+.nav-link-active {
+    /* Sets the color of the currently active (selected) navigation link to blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+    /* Makes the active link text a bit bolder. */
+    font-weight: 600; /* semibold */
+}
+
+/* Styles for the dropdown menus in your navigation. */
+.dropdown {
+    /* Allows you to position items inside this dropdown relative to its own position. */
+    position: relative;
+    /* Makes the dropdown behave like an inline block, allowing other elements next to it. */
+    display: inline-block;
+}
+
+/* Hide the small arrow icon next to dropdown links by default. */
+.dropdown .fa-chevron-down {
+    /* Makes the arrow completely transparent initially. */
+    opacity: 0;
+    /* Smoothly changes opacity and position over 0.3 seconds. */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Slightly moves the arrow up by 1 pixel. */
+    transform: translateY(-1px);
+}
+
+/* Show and rotate the arrow ONLY when hovering the parent dropdown container */
+.dropdown:hover .fa-chevron-down {
+    /* Makes the arrow fully visible when the dropdown is hovered. */
+    opacity: 1;
+    /* Moves the arrow back to its original position and rotates it 180 degrees (flips it). */
+    transform: translateY(0) rotate(180deg);
+}
+.dropdown:hover .nav-link {
+    /* Changes the main navigation link color to blue when its dropdown is hovered. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* Styles for the content that appears when a dropdown is opened. */
+.dropdown-content {
+    /* Hides the dropdown content by default. */
+    display: none;
+    /* Positions the dropdown content absolutely, allowing it to "float" over other content. */
+    position: absolute;
+    /* Centers the dropdown content horizontally relative to its parent dropdown link. */
+    left: 50%;
+    /* Adjusts the horizontal position to truly center it. */
+    transform: translateX(-50%);
+    /* Sets the background color of the dropdown menu to white. */
+    background-color: #ffffff;
+    /* Ensures the dropdown is at least 240 pixels wide. */
+    min-width: 240px;
+    /* Adds a subtle shadow around the dropdown for depth. */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    /* Ensures the dropdown appears above other content. */
+    z-index: 50;
+    /* Rounds the corners of the dropdown menu. */
+    border-radius: 0.5rem;
+    /* Adds padding inside the dropdown menu. */
+    padding: 0.5rem 0;
+    /* Removes any top margin. */
+    margin-top: 0;
+    /* Makes the dropdown content transparent initially. */
+    opacity: 0;
+    /* Hides the dropdown content from screen readers and interaction until visible. */
+    visibility: hidden;
+    /* Smoothly animates opacity and position, with a slight delay for visibility. */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    /* Starts the dropdown slightly below its final position. */
+    transform: translateY(10px);
+    /* Adds a blue border at the top of the dropdown menu. */
+    border-top: 3px solid var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* Styles for individual links within the dropdown content. */
+.dropdown-content a {
+    /* Sets the text color of dropdown links to your brand's dark text color. */
+    color: var(--brand-dark-text);
+    /* Adds padding around each link for better clickability. */
+    padding: 0.75rem 1.5rem;
+    /* Removes the default underline from links. */
+    text-decoration: none;
+    /* Makes each link take up its own full line. */
+    display: block;
+    /* Sets the font size for dropdown links. */
+    font-size: 0.875rem;
+}
+
+/* Styles for dropdown links when hovered. */
+.dropdown-content a:hover {
+    /* Changes the background color of the link when hovered. */
+    background-color: #f3f4f6;
+    /* Changes the text color of the link to blue when hovered. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* This is the key: only show the menu when hovering the PARENT dropdown div */
+.dropdown:hover .dropdown-content {
+    /* Makes the dropdown content visible when the parent dropdown is hovered. */
+    display: block;
+    /* Makes the dropdown content fully opaque. */
+    opacity: 1;
+    /* Makes the dropdown content interactive and visible to screen readers. */
+    visibility: visible;
+    /* Moves the dropdown content to its final position. */
+    transform: translateY(0);
+    /* Smoothly animates opacity and position without a visibility delay. */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0s;
+}
+
+/* ==========================================================================
+   General Page & Component Styles
+   These styles apply to various sections and reusable elements across your website.
+   ========================================================================== */
+/* Styles for the hero section with a video background. */
+.hero-section-video-bg {
+    /* Allows positioning of child elements relative to this section. */
+    position: relative;
+    /* Hides any content that goes beyond the section's boundaries. */
+    overflow: hidden;
+    /* Sets the text color within this section to white. */
+    color: white;
+}
+/* Styles for the video element within the hero section. */
+#heroVideo {
+    /* Positions the video absolutely to cover the entire section. */
+    position: absolute;
+    /* Centers the video vertically. */
+    top: 50%;
+    /* Centers the video horizontally. */
+    left: 50%;
+    /* Ensures the video is at least 100% wide. */
+    min-width: 100%;
+    /* Ensures the video is at least 100% high. */
+    min-height: 100%;
+    /* Allows the width to adjust automatically. */
+    width: auto;
+    /* Allows the height to adjust automatically. */
+    height: auto;
+    /* Puts the video behind other content. */
+    z-index: -100;
+    /* Adjusts the video's position to truly center it. */
+    transform: translateX(-50%) translateY(-50%);
+    /* Ensures the video covers the entire area without distortion. */
+    object-fit: cover;
+}
+/* Styles for the overlay on top of the hero video. */
+.hero-overlay {
+    /* Positions the overlay absolutely to cover the entire section. */
+    position: absolute;
+    /* Aligns the overlay to the top-left corner. */
+    top: 0;
+    left: 0;
+    /* Makes the overlay fill the entire width. */
+    width: 100%;
+    /* Makes the overlay fill the entire height. */
+    height: 100%;
+    /* Sets a semi-transparent black background for the overlay. */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Puts the overlay between the video and the hero content. */
+    z-index: -50;
+}
+/* Styles for the main content within the hero section. */
+.hero-content {
+    /* Allows positioning of child elements relative to this content. */
+    position: relative;
+    /* Ensures the content appears above the video and overlay. */
+    z-index: 10;
+}
+
+/* Styles for cards that have a hover effect. */
+.card-hover {
+    /* Smoothly animates position and shadow changes over 0.3 seconds. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+    /* Moves the card slightly up when hovered. */
+    transform: translateY(-5px);
+    /* Adds a larger shadow when the card is hovered. */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Styles for your primary buttons. */
+.btn-primary {
+    /* Sets the background color of the button to your brand's blue. */
+    background-color: var(--brand-primary-blue); /* Changed to blue */
+    /* Sets the text color of the button to white. */
+    color: white;
+    /* Smoothly animates background color, position, and shadow. */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+    /* Changes the background color to a slightly darker blue when hovered. */
+    background-color: #2679e6; /* A slightly darker shade of your new blue for hover */
+    /* Moves the button slightly up when hovered. */
+    transform: translateY(-2px);
+    /* Adds a larger shadow when the button is hovered. */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Styles for the numbers in your "Our Impact by the Numbers" section. */
+.counter-number {
+    /* Sets the font size of the counter numbers. */
+    font-size: 2.5rem;
+    /* Makes the counter numbers bold. */
+    font-weight: 700;
+    /* Sets the color of the counter numbers to your brand's blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+/* Styles for the labels below the counter numbers. */
+.counter-label {
+    /* Sets the font size of the labels. */
+    font-size: 0.875rem;
+    /* Sets the text color of the labels to a dark gray. */
+    color: #4B5563;
+    /* Adds some space above the labels. */
+    margin-top: 0.5rem;
+}
+
+/* Styles for main section titles. */
+.section-title {
+    /* Sets the text color of section titles to your brand's dark text color. */
+    color: var(--brand-dark-text);
+    /* Slightly reduces the spacing between letters. */
+    letter-spacing: -0.5px;
+}
+/* Styles for a decorative line that appears above section titles. */
+.section-title::before {
+    /* Creates a new element (the line) before the title text. */
+    content: '';
+    /* Positions this line absolutely within the title's area. */
+    position: absolute;
+    /* Aligns the line to the top of the title. */
+    top: 0;
+    /* Centers the line horizontally. */
+    left: 50%;
+    /* Adjusts the horizontal position to truly center it. */
+    transform: translateX(-50%);
+    /* Starts with no width (hidden). */
+    width: 0px;
+    /* Sets the height of the line. */
+    height: 4px;
+    /* Sets the background color of the line to your brand's blue. */
+    background-color: var(--brand-primary-blue); /* Changed to blue */
+    /* Rounds the corners of the line. */
+    border-radius: 2px;
+    /* Smoothly animates the width change over 0.8 seconds. */
+    transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+/* When the section title has the 'animate' class, the line becomes visible. */
+.section-title.animate::before {
+    /* Expands the line to 80 pixels wide. */
+    width: 80px;
+}
+/* Adjusts the line position if the title is left-aligned. */
+.section-title.text-left::before {
+    /* Aligns the line to the left. */
+    left: 0;
+    /* Removes the horizontal centering adjustment. */
+    transform: translateX(0);
+}
+
+/* Styles for the headings within the brief sections (About Us, What We Do, Our Facility). */
+.brief-section h3 {
+    /* Sets the color of these headings to your brand's blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* Styles for social media links (e.g., in the footer). */
+.social-link {
+    /* Sets the default color of social media icons to a light gray. */
+    color: #D1D5DB;
+    /* Sets the size of the icons. */
+    font-size: 1.5rem;
+    /* Smoothly animates color and size changes. */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-link:hover {
+    /* Changes the icon color to your brand's blue when hovered. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+    /* Slightly enlarges the icon when hovered. */
+    transform: scale(1.1);
+}
+
+/* Styles for the section just before the footer. */
+.pre-footer {
+    /* Sets the background color to a light gray. */
+    background-color: #f3f4f6;
+}
+/* Styles for headings within the pre-footer section. */
+.pre-footer-heading {
+    /* Sets the text color of these headings to your brand's dark text color. */
+    color: var(--brand-dark-text);
+}
+/* Styles for individual links within the pre-footer section. */
+.pre-footer-link {
+    /* Makes each link take up its own full line. */
+    display: block;
+    /* Adds some space below each link. */
+    margin-bottom: 0.5rem;
+    /* Sets the default text color of these links. */
+    color: #4B5563;
+    /* Smoothly animates color changes. */
+    transition: color 0.3s ease;
+}
+.pre-footer-link:hover {
+    /* Changes the link color to your brand's blue when hovered. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* ANIMATION & SERVICES PAGE STYLES
+   These styles are for elements that animate into view as the user scrolls,
+   and specific styles for service-related pages. */
+.animate-on-scroll {
+    /* Makes elements invisible initially. */
+    opacity: 0;
+    /* Smoothly animates opacity and position changes. */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Animation for elements that fade in and move up. */
+.fade-in-up {
+    /* Starts the element 30 pixels below its final position. */
+    transform: translateY(30px);
+}
+/* Animation for elements that slide in from the left. */
+.slide-in-left {
+    /* Starts the element 50 pixels to the left of its final position. */
+    transform: translateX(-50px);
+}
+/* Animation for elements that slide in from the right. */
+.slide-in-right {
+    /* Starts the element 50 pixels to the right of its final position. */
+    transform: translateX(50px);
+}
+/* When an animating element becomes visible, these styles apply. */
+.is-visible {
+    /* Makes the element fully opaque. */
+    opacity: 1;
+    /* Resets any previous transform (like translateY or translateX) to its original state. */
+    transform: none;
+}
+
+/* Styles for icons used in service features. */
+.service-feature-icon {
+    /* Sets the background color of the icon circle. */
+    background-color: #f3f4f6;
+    /* Sets the color of the icon itself to your brand's blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+    /* Makes the icon background a perfect circle. */
+    border-radius: 50%;
+    /* Adds padding around the icon. */
+    padding: 0.75rem;
+    /* Sets the size of the icon. */
+    font-size: 1.25rem;
+    /* Prevents the icon from shrinking in a flex container. */
+    flex-shrink: 0;
+}
+
+/* Styles for a secondary navigation bar (sub-nav). */
+.sub-nav {
+    /* Sets the background color of the sub-navigation. */
+    background-color: #f9fafb;
+    /* Adds a light gray border at the bottom. */
+    border-bottom: 1px solid #e5e7eb;
+    /* Makes the sub-navigation stick to the top when scrolling. */
+    position: sticky;
+    /* Sets the sticky position from the top. */
+    top: 104px;
+    /* Ensures the sub-navigation appears above other content. */
+    z-index: 40;
+}
+/* Styles for links within the sub-navigation. */
+.sub-nav-link {
+    /* Sets the default text color of sub-navigation links. */
+    color: #6b7280;
+    /* Smoothly animates color and border changes. */
+    transition: color 0.3s, border-color 0.3s;
+    /* Creates a transparent bottom border. */
+    border-bottom: 3px solid transparent;
+}
+.sub-nav-link:hover {
+    /* Changes the link color to your brand's dark text when hovered. */
+    color: var(--brand-dark-text); /* Keeping this dark text for contrast on sub-nav hover */
+}
+/* Styles for the active (selected) sub-navigation link. */
+.sub-nav-link.active {
+    /* Changes the link color to your brand's blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+    /* Changes the bottom border color to your brand's blue. */
+    border-bottom-color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* Styles for tab buttons within a tabs container. */
+.tabs-container .tab-button {
+    /* Sets the default text color of tab buttons. */
+    color: #6b7280;
+    /* Smoothly animates color and border changes. */
+    transition: color 0.3s, border-color 0.3s;
+    /* Creates a transparent bottom border. */
+    border-bottom: 3px solid transparent;
+    /* Adds padding at the bottom of the button. */
+    padding-bottom: 0.5rem;
+}
+/* Styles for the active (selected) tab button. */
+.tabs-container .tab-button.active {
+    /* Changes the button color to your brand's blue. */
+    color: var(--brand-primary-blue); /* Changed to blue */
+    /* Changes the bottom border color to your brand's blue. */
+    border-bottom-color: var(--brand-primary-blue); /* Changed to blue */
+}
+
+/* Styles for the content associated with each tab. */
+.tab-content {
+    /* Hides the tab content by default. */
+    display: none;
+}
+/* Defines an animation that makes elements fade in and move up slightly. */
+@keyframes fadeInUp {
+    /* Starts with full transparency and slightly moved down. */
+    from { opacity: 0; transform: translateY(10px); }
+    /* Ends fully visible at its normal position. */
+    to { opacity: 1; transform: translateY(0); }
+}
+/* When tab content is active, it becomes visible with the fadeInUp animation. */
+.tab-content.active {
+    /* Makes the tab content visible. */
+    display: block;
+    /* Applies the fadeInUp animation for 0.5 seconds. */
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Styles for special "gateway" cards, often used for categories or featured items. */
+.gateway-card {
+    /* Allows positioning of child elements relative to this card. */
+    position: relative;
+    /* Hides any content that goes beyond the card's boundaries. */
+    overflow: hidden;
+    /* Rounds the corners of the card. */
+    border-radius: 0.5rem;
+    /* Adds a shadow to the card. */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4 6px -2px rgba(0, 0, 0, 0.05);
+    /* Smoothly animates position and shadow changes. */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+/* Styles for gateway cards when hovered. */
+.gateway-card:hover {
+    /* Slightly enlarges the card when hovered. */
+    transform: scale(1.03);
+    /* Adds a larger, more prominent shadow when hovered. */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+/* Styles for images within gateway cards. */
+.gateway-card img {
+    /* Smoothly animates image transformations. */
+    transition: transform 0.4s ease;
+}
+/* When the gateway card is hovered, the image inside it slightly enlarges. */
+.gateway-card:hover img {
+    /* Slightly enlarges the image when the card is hovered. */
+    transform: scale(1.1);
+}
+/* Styles for an overlay on top of images in gateway cards. */
+.gateway-card-overlay {
+    /* Positions the overlay to cover the entire card. */
+    position: absolute;
+    /* Sets the overlay to cover the entire area of its parent. */
+    inset: 0;
+    /* Creates a gradient background for the overlay, fading from transparent to dark. */
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 50%);
+}

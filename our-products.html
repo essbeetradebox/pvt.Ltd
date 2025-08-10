@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Ess Bee Trade Box Private Limited</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles for the loading screen that appears when the page first loads. */
+        #loader {
+            /* Fixes the loader to the browser window. */
+            position: fixed;
+            /* Positions the loader at the very top-left corner. */
+            top: 0;
+            left: 0;
+            /* Makes the loader cover the entire screen. */
+            width: 100%;
+            height: 100%;
+            /* Sets the background color to white. */
+            background-color: #ffffff;
+            /* Arranges content vertically and centers it. */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Ensures the loader is on top of everything. */
+            z-index: 9999;
+            /* Smooth transition for hiding the loader. */
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        /* When 'hidden' class is added, the loader fades out. */
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        /* Animation for the image inside the loader. */
+        #loader img {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        /* Styles for the tagline in the loader. */
+        #loader .tagline {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #a0a0a0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.5s forwards;
+        }
+        /* Defines the 'pulse' animation. */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        /* Defines the 'fadeIn' animation. */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Hides scrollbar while loader is active. */
+        .loading {
+            overflow: hidden;
+        }
+
+        /* --- TYPOGRAPHY SYSTEM --- */
+        /* Ensures specific text elements use the 'Playfair Display' font. */
+        .section-title, .hero-content h1, .brief-section h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Adjusting size for the new font. */
+        .section-title {
+            font-size: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- DYNAMIC BACKGROUND & ANIMATION STYLES --- */
+        /* Styles for parallax background. */
+        .parallax-bg {
+            background-image: url('images/electronics-texture-bg.jpg'); /* Updated to electronics-themed background */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        /* Overlay for parallax background. */
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+        /* Hover animation for brief sections. */
+        .brief-section {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .brief-section:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        /* Custom CSS variables for brand colors. */
+        :root {
+            /* Changed variable name and color to match your new brand color */
+            --brand-primary-blue: #2d8cff;
+            --brand-dark-text: #2C2C2C;
+        }
+        /* Ensures elements using old color variables adopt new ones. */
+        .text-\[var\(--brand-primary-gold\)\],
+        .focus\:ring-\[var\(--brand-primary-gold\)\],
+        .focus\:border-\[var\(--brand-primary-gold\)\],
+        .focus\:ring-\[var\(--brand-primary-gold\)\] {
+            color: var(--brand-primary-blue);
+            border-color: var(--brand-primary-blue);
+            --tw-ring-color: var(--brand-primary-blue);
+        }
+        /* Specific override for the background of the call to action section */
+        .bg-vhm-dark-text {
+            background-color: var(--brand-dark-text);
+        }
+        .text-vhm-dark-text {
+            color: var(--brand-dark-text);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="Assets/logo.jpg" alt="Ess Bee Trade Box Pvt Ltd Logo" class="h-20 md:h-20 w-auto">
+        </a>
+        <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+            <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <div class="dropdown">
+                <a href="services.html" class="nav-link nav-link-active px-3 py-2 rounded-md text-sm font-medium flex items-center"> What We Do <i class="fas fa-chevron-down text-xs ml-1"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="design-engineering.html">Design & Engineering</a>
+                    <a href="metal-fabrication.html">Metal Fabrication</a>
+                    <a href="powder-coating.html">Powder Coating</a>
+                    <a href="component-integration.html">Component Integration</a>
+                    <a href="quality-assurance.html">Quality Assurance</a>
+                </div>
+            </div>
+            <div class="dropdown">
+    <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+        Gallery <i class="fas fa-chevron-down text-xs ml-1"></i> </a>
+    <div class="dropdown-content">
+        <a href="our-work.html">Our Work</a>
+        <a href="our-products.html">Our Proudcts</a>
+        <a href="our-certificates.html">Our Certificates</a>
+    </div>
+</div>
+            <a href="about-us.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+          <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Contact Us</a>
+        </div>
+<div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t border-gray-200">
+        <a href="index.html" class="block nav-link px-4 py-3 border-b border-gray-100">Home</a>
+       
+        <div class="border-b border-gray-100">
+            <button id="mobile-services-dropdown-button" class="flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-700">
+                What We Do
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 transform"></i>
+            </button>
+            <div id="mobile-services-dropdown-content" class="hidden pl-8">
+                <a href="services.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Overview</a>
+                <a href="design-engineering.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Design & Engineering</a>
+                <a href="metal-fabrication.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Metal Fabrication</a>
+                <a href="powder-coating.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Powder Coating</a>
+                <a href="component-integration.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Component Integration</a>
+                <a href="quality-assurance.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Quality Assurance</a>
+            </div>
+        </div>
+
+        <div class="border-b border-gray-100">
+            <button id="mobile-gallery-dropdown-button" class="flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-700">
+                Our Gallery
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 transform"></i>
+            </button>
+            <div id="mobile-gallery-dropdown-content" class="hidden pl-8">
+                <a href="our-work.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Work</a>
+                <a href="our-products.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Products</a>
+                <a href="our-certificates.html" class="block px-4 py-3 text-sm text-gray-600 hover:text-[var(--brand-primary-blue)] transition-colors duration-300">Our Certificates</a>
+            </div>
+             <a href="about-us.html" class="block nav-link px-4 py-3 border-b border-gray-100">About Us</a>
+        <a href="contact.html" class="block nav-link px-4 py-3 border-b border-gray-100 nav-link-active">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section class="relative bg-gray-700 py-20 bg-cover bg-center" style="background-image: url('images/your-products-banner.jpg');"> <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg animate-on-scroll fade-in-up">Our Products</h1>
+                <p class="mt-4 text-lg text-gray-200 animate-on-scroll fade-in-up" style="animation-delay: 200ms;">Innovative Electrical Control Panels for Every Need</p>
+            </div>
+        </section>
+
+        <div class="sub-nav py-3">
+            <div class="container mx-auto px-6 flex justify-center space-x-6 overflow-x-auto">
+                <a href="#pcc-panel" class="sub-nav-link whitespace-nowrap active">PCC Panel</a>
+                <a href="#ht-panel" class="sub-nav-link whitespace-nowrap">HT Panel</a>
+                <a href="#lt-panel" class="sub-nav-link whitespace-nowrap">LT Panel</a>
+                <a href="#amf-panel" class="sub-nav-link whitespace-nowrap">AMF Panel</a>
+            </div>
+        </div>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center max-w-3xl">
+                <h2 class="section-title text-4xl md:text-5xl font-extrabold relative pt-10">Comprehensive Range of Electrical Control Panels</h2>
+                <p class="mt-8 text-lg text-gray-600 leading-relaxed animate-on-scroll fade-in-up">
+                    Ess Bee Trade Box is a leading manufacturer and supplier of precision-engineered electrical control panels. Designed for superior performance, durability, and safety, our products cater to a wide array of industrial and commercial applications.
+                </p>
+            </div>
+        </section>
+
+        <div class="bg-white overflow-hidden">
+
+            <section id="pcc-panel" class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="animate-on-scroll slide-in-left">
+                            <img src="Assets/pannel photos.png" alt="Power Control Center (PCC) Panel" class="rounded-lg shadow-xl w-full">
+                        </div>
+                        <div class="animate-on-scroll slide-in-right">
+                            <h3 class="text-3xl font-bold text-[var(--brand-dark-text)] mb-4">Power Control Center (PCC) Panel</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Our PCC Panels are modular structured electrical control panels used to control power supply in large industrial and commercial units. They efficiently manage power supplied to heavy machinery, equipment, motors, and transformers. Features include single/multiple incomers, bus couplers with interlocking, protective relays, and options for top/middle/horizontal bus bar chambers, and copper/aluminum bus bars.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ht-panel" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="md:order-2 animate-on-scroll slide-in-right">
+                            <img src="Assets/Ht panel image.png" alt="High Tension (HT) Panel" class="rounded-lg shadow-xl w-full">
+                        </div>
+                        <div class="md:order-1 animate-on-scroll slide-in-left">
+                            <h3 class="text-3xl font-bold text-[var(--brand-dark-text)] mb-4">High Tension (HT) Panel</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Our High Tension (HT) Panels are designed for controlling, protecting, and isolating electrical systems operating at high voltages. Built with superior components and safety mechanisms, they ensure reliable power distribution and protection for transformers, motors, and main power lines in large-scale industrial applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="lt-panel" class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="animate-on-scroll slide-in-left">
+                            <img src="Assets/lt.png" alt="Low Tension (LT) Panel" class="rounded-lg shadow-xl w-full">
+                        </div>
+                        <div class="animate-on-scroll slide-in-right">
+                            <h3 class="text-3xl font-bold text-[var(--brand-dark-text)] mb-4">Low Tension (LT) Panel</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Designed for low voltage applications, our LT Panels are used for controlling and distributing power efficiently within commercial buildings and industrial settings. They are built for safety, reliability, and ease of maintenance, serving as a crucial link in the power distribution chain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="amf-panel" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="md:order-2 animate-on-scroll slide-in-right">
+                            <img src="Assets/amf.png" alt="Automatic Mains Failure (AMF) Panel" class="rounded-lg shadow-xl w-full">
+                        </div>
+                        <div class="md:order-1 animate-on-scroll slide-in-left">
+                            <h3 class="text-3xl font-bold text-[var(--brand-dark-text)] mb-4">Automatic Mains Failure (AMF) Panel</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                AMF Panels automatically switch power supply to a standby generator upon mains failure and switch back when mains power is restored. This ensures uninterrupted power supply for critical operations, minimizing downtime and protecting sensitive equipment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="pt-20 pb-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl md:text-5xl font-extrabold relative pt-10 text-center">Why Choose Ess Bee Trade Box Products?</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-5xl mx-auto">
+                    <div class="text-center p-4 animate-on-scroll fade-in-up">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 text-[var(--brand-primary-blue)] mx-auto mb-4">
+                            <i class="fas fa-bolt text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Unmatched Quality</h4>
+                        <p class="text-gray-600">Every product undergoes rigorous quality checks to ensure superior performance and durability, meeting national and international standards.</p>
+                    </div>
+                    <div class="text-center p-4 animate-on-scroll fade-in-up" style="animation-delay: 200ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 text-[var(--brand-primary-blue)] mx-auto mb-4">
+                            <i class="fas fa-cogs text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Customization Options</h4>
+                        <p class="text-gray-600">We offer flexible customization to tailor our products to your specific needs, ensuring a perfect fit for your unique applications.</p>
+                    </div>
+                    <div class="text-center p-4 animate-on-scroll fade-in-up" style="animation-delay: 400ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 text-[var(--brand-primary-blue)] mx-auto mb-4">
+                            <i class="fas fa-hands-helping text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Dedicated Support</h4>
+                        <p class="text-gray-600">Benefit from our comprehensive after-sales support and technical assistance, ensuring smooth operation and long-term satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <section id="contact-details" class="pre-footer py-16">
+<div class="container mx-auto px-6 text-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+<div class="text-center">
+<h4 class="pre-footer-heading font-bold text-xl mb-4 tracking-wide">Quick Links</h4>
+<a href="index.html" class="pre-footer-link">Home</a>
+<a href="about-us.html" class="pre-footer-link">About Us</a>
+<a href="services.html" class="pre-footer-link">Services</a>
+<a href="contact.html" class="pre-footer-link">Contact Us</a>
+</div>
+<div class="text-center justify-text">
+<h4 class="pre-footer-heading font-bold text-xl mb-4 tracking-wide">Contact Us</h4>
+<p class="text-gray-600 leading-relaxed">
+<strong>Address:</strong> Jagdeo Nagar, beside Leeds Asian School,<br>Nahar Chowk, Danapur, Patna -801503<br>
+<strong>Phone:</strong> <a href="tel:+918709653866" class="pre-footer-link inline">+91-8709653866</a><br>
+<strong>Email:</strong> <a href="mailto:box24trade@gmail.com" class="pre-footer-link inline">box24trade@gmail.com</a>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="py-8 bg-gray-800 text-gray-400">
+<div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+<p class="mb-4 md:mb-0 text-center md:text-left text-base">&copy; <span id="currentYear"></span> Ess Bee Trade Box Private Limited. All Rights Reserved.</p>
+</div>
+</footer>
+
+    <script>
+    // Set the current year in the footer dynamically.
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // REWRITTEN ANIMATION SCRIPT: Makes elements animate when they become visible on screen.
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When element enters the viewport, add animation class.
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible', 'animate');
+            }
+            // When element leaves the viewport, remove class to reset animation.
+            else {
+                entry.target.classList.remove('is-visible', 'animate');
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible.
+    });
+
+    // Apply the animation observer to all desired elements.
+    document.querySelectorAll('.animate-on-scroll, .section-title, .brief-section, .grid > div').forEach(el => {
+        animationObserver.observe(el);
+    });
+
+    // --- Mobile Menu Dropdown Logic ---
+ // Straightforward toggle logic for the mobile menu and the nested dropdowns within it.
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileServicesDropdownButton = document.getElementById('mobile-services-dropdown-button');
+    const mobileServicesDropdownContent = document.getElementById('mobile-services-dropdown-content');
+    const mobileGalleryDropdownButton = document.getElementById('mobile-gallery-dropdown-button');
+    const mobileGalleryDropdownContent = document.getElementById('mobile-gallery-dropdown-content');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Toggle for "What We Do" dropdown in mobile
+    if (mobileServicesDropdownButton && mobileServicesDropdownContent) {
+        mobileServicesDropdownButton.addEventListener('click', () => {
+            mobileServicesDropdownContent.classList.toggle('hidden');
+            const chevronIcon = mobileServicesDropdownButton.querySelector('.fa-chevron-down');
+            chevronIcon.classList.toggle('rotate-180');
+        });
+    }
+
+    // Toggle for "Gallery" dropdown in mobile
+    if (mobileGalleryDropdownButton && mobileGalleryDropdownContent) {
+        mobileGalleryDropdownButton.addEventListener('click', () => {
+            mobileGalleryDropdownContent.classList.toggle('hidden');
+            const chevronIcon = mobileGalleryDropdownButton.querySelector('.fa-chevron-down');
+            chevronIcon.classList.toggle('rotate-180');
+        });
+    }
+
+    // This handles smooth scroll for sub-navigation links.
+    const subNavLinks = document.querySelectorAll('.sub-nav a');
+    if (subNavLinks.length > 0) {
+        subNavLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default jump.
+                const targetId = this.getAttribute('href'); // Get target section ID.
+                const targetElement = document.querySelector(targetId); // Find target element.
+                if (targetElement) {
+                    // Calculate offset to account for fixed header and sub-navigation.
+                    const headerOffset = document.querySelector('header').offsetHeight + document.querySelector('.sub-nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+                    // Smoothly scroll to the target.
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    // This handles tab functionality (not directly used on this page, but kept for consistency).
+    function changeTab(event, tabID) {
+        const tabcontent = document.querySelectorAll('.tab-content');
+        tabcontent.forEach(content => content.style.display = "none");
+
+        const tablinks = document.querySelectorAll('.tab-button');
+        tablinks.forEach(link => link.classList.remove('active'));
+
+        document.getElementById(tabID).style.display = "block";
+        event.currentTarget.classList.add('active');
+    }
+    // Set the first tab to be active on page load if tabs exist (not directly applicable here, but common for tabbed pages).
+    if(document.querySelector('.tab-button')) {
+        document.addEventListener('DOMContentLoaded', () => {
+             document.querySelector('.tab-button').click();
+        });
+    }
+
+    // Loader logic (kept for consistency, though typically only on index.html).
+    const loader = document.getElementById('loader');
+    const minLoadTime = 2500;
+    const pageLoadTime = Date.now();
+
+    window.addEventListener('load', () => {
+        const timeLapsed = Date.now() - pageLoadTime;
+        const delay = Math.max(minLoadTime - timeLapsed, 0);
+
+        setTimeout(() => {
+            if (loader) { // Check if loader exists before trying to hide it
+                loader.classList.add('hidden');
+            }
+            document.body.classList.remove('loading');
+        }, delay);
+    });
+    </script>
+</body>
+</html>
